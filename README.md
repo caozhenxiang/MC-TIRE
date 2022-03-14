@@ -1,7 +1,7 @@
 MC-TIRE
 ===============================
 
-Repository for developing the multi-channel version of the time-invariant representation autoencoder approach (TIRE) for change point detection (CPD) task. More information can be found in the paper Change Point Detection in Multi-channel Time Series via a Time-invariant Representation.
+Repository for developing the multi-channel version of the time-invariant representation autoencoder approach (TIRE) for change point detection (CPD) task. More information can be found in the paper **Change Point Detection in Multi-channel Time Series via a Time-invariant Representation**.
 
 
 The authors of this paper are:
