@@ -15,8 +15,9 @@ def distance(data, window_size):
     Returns:
         Array of dissimilarities of size ((nr. of windows)-stride)
     """
-
-    nr_windows = np.shape(data)[0]
+    if len(data.shape) == 1:
+        data = np.expand_dims(data, axis=-1)
+    nr_windows, nr_c = np.shape(data)
 
     index_1 = range(window_size, nr_windows, 1)
     index_2 = range(0, nr_windows - window_size, 1)
@@ -34,7 +35,7 @@ def new_peak_prominences(distances):
     """
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore")
-        all_peak_prom = peak_prominences(distances ,range(len(distances)))
+        all_peak_prom = peak_prominences(distances, range(len(distances)))
     return all_peak_prom
 
 
@@ -77,13 +78,8 @@ def cp_to_timestamps(changepoints, tolerance, length_ts):
     locations_cp = [idx for idx, val in enumerate(changepoints) if val > 0.0]
 
     output = []
-    while len(locations_cp ) > 0:
+    while len(locations_cp) > 0:
         k = 0
-        # for i in range(len(locations_cp ) -1):
-        #     if locations_cp[i]+1 == locations_cp[i+1]:
-        #         k += 1
-        #     else:
-        #         break
         output.append \
             (list(range(max(locations_cp[0] - tolerance, 0) ,min(locations_cp[k] + 1 +tolerance, length_ts), 1)))
         del locations_cp[:k+1]

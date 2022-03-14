@@ -1,0 +1,9 @@
+tensorflow
+tensorflow_probability
+numpy
+pandas
+scipy
+matplotlib
+seaborn
+scikit-learn
+tensorflow-addons

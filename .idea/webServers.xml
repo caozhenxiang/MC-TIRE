@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a5ac04c1-985d-4c9a-a414-c317ac53152e" name="becassine">
+        <fileTransfer accessType="SFTP" host="becassine.esat.kuleuven.be" port="22" sshConfigId="896ca7bc-436c-4453-97e1-0db52556cbaf" sshConfig="zcao@becassine.esat.kuleuven.be:22 agent" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

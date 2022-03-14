@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="zcao@becassine.esat.kuleuven.be:22 agent" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="becassine">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/users/sista/zcao/PhD KULeuven/Projects/Data/used_data" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="zcao@becassine.esat.kuleuven.be:22 agent">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/users/sista/zcao/PhD KULeuven/Projects/Data/used_data" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
