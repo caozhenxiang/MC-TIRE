@@ -20,15 +20,15 @@ Change Point Detection (CPD) refers to the task of localizing abrupt changes in 
 Requirements
 ------------
 This code requires:
-**tensorflow**
-**tensorflow_probability**
-**tensorflow-addons**
-**numpy**
-**pandas**
-**scipy**
-**matplotlib**
-**seaborn**
-**scikit-learn**
+**tensorflow**,
+**tensorflow_probability**,
+**tensorflow-addons**,
+**numpy**,
+**pandas**,
+**scipy**,
+**matplotlib**,
+**seaborn**,
+**scikit-learn**.
 
 To install the required packages, run:
 
