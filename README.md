@@ -43,3 +43,7 @@ Usage
 The main method is implemented in ``MC-main.py`` and can
 be run directly from there, or from ``MC-wrapper.py`` which will run the code
 for all datasets and parameter settings at once.
+
+Data Sources
+-----
+HASC-2011: .[http://hasc.jp/hc2011/index-en.html].(http://hasc.jp/hc2011/index-en.html)
