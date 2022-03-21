@@ -47,3 +47,5 @@ for all datasets and parameter settings at once.
 Data Sources
 -----
 HASC-2011: [Link](http://hasc.jp/hc2011/index-en.html)
+Honeybee Dance: [Link](http://www.sangminoh.org/Research/Entries/2009/1/21_Honeybee_Dance_Dataset.html)
+UCI-test: [Link](https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
