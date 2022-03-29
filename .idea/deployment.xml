@@ -12,7 +12,7 @@
       <paths name="zcao@becassine.esat.kuleuven.be:22 agent">
         <serverdata>
           <mappings>
-            <mapping deploy="/users/sista/zcao/PhD KULeuven/Projects/Data/used_data" local="$PROJECT_DIR$" />
+            <mapping deploy="/users/sista/zcao/PhD KULeuven/Projects/Code/MC-TIRE-main" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>

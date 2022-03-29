@@ -132,14 +132,14 @@ def create_parallel_AEs(X, n_filter, enable_summary, loss_weight_share_AS, loss_
         s = tf.concat([tf.expand_dims(deconv_S1, axis=1), tf.expand_dims(deconv_S2, axis=1)], axis=1)
         if i == 0:
             S = s
-            encoded_S = encoded_s
+            encoded_S = encoded_s[:,:,:-1,:]
         else:
             S = tf.concat([S, s], axis=-1)
-            encoded_S = tf.concat([encoded_S, encoded_s], axis=-1)
+            encoded_S = tf.concat([encoded_S, encoded_s[:,:,:-1,:]], axis=-1)
 
     across_channel_info = tf.matmul(S, A)
     A = tf.reshape(A, [-1, 2, nr_channels * rank])
-    encoded_S = tf.reshape(encoded_S, [-1, 2, 4 * rank])
+    encoded_S = tf.reshape(encoded_S, [-1, 2, 3 * rank])
 
     # addition to get X
     reconstructed_input = across_channel_info + B_decoded_all
@@ -186,7 +186,7 @@ def train_model(windows, loss_weight_share_AS, loss_weight_share_B, loss_weight_
             epochs=nr_epochs,
             verbose=verbose,
             batch_size=64,
-            shuffle=False,
+            shuffle=True,
             validation_split=0.0,
             initial_epoch=0,
             callbacks=[callback]

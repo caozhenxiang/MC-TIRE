@@ -44,6 +44,8 @@ n_filter = 2
 # --------------------------- #
 # load model
 path = os.path.join(os.path.abspath(os.getcwd()), "results_all")
+if not os.path.exists(path):
+    os.makedirs(path)
 
 for dataset in datasets:
     # --------------------------- #

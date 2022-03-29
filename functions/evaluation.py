@@ -37,7 +37,7 @@ def show_result(generate_data, window_size, dissimilarities, parameters, thresho
             small_ratio = ratio[ratio < 0.65]
             if small_ratio.size == 0:
                 small_ratio = [0]
-            """
+
             for key, value in dissimilarities.items():
                 precision, recall, f1 = metrics.print_f1(value, [threshold], change_points, window_size, generate_data)
                 if enable_plot:
@@ -49,7 +49,7 @@ def show_result(generate_data, window_size, dissimilarities, parameters, thresho
                     print(recall, file=f)
                     print(f1, file=f)
                     print("\n", file=f)
-            """
+
             # check ratio to assign change-types
             peaks_AS = find_peaks(dissimilarities['A&S'])[0]
             peaks_B = find_peaks(dissimilarities['B'])[0]
