@@ -28,27 +28,12 @@ def show_result(generate_data, window_size, dissimilarities, parameters, thresho
         if isinstance(dissimilarities, dict):
             related_channels = np.arange(0, loss_coherent.size)
             ratio = loss_incoherent/(loss_coherent + loss_incoherent)
-            print(loss_coherent)
-            print(loss_incoherent)
-            print(ratio)
             index_array = np.argsort(ratio)
             max_ratio = ratio[index_array[-1]]
             large_ratio = ratio[ratio >= 0.65]
             small_ratio = ratio[ratio < 0.65]
             if small_ratio.size == 0:
                 small_ratio = [0]
-
-            for key, value in dissimilarities.items():
-                precision, recall, f1 = metrics.print_f1(value, [threshold], change_points, window_size, generate_data)
-                if enable_plot:
-                    metrics.plot_cp(value, change_points, window_size, 0, np.shape(parameters)[0], threshold,
-                                    plot_prominences=True, simulate_data=generate_data, weights=None)
-                print("\n")
-                if f is not None:
-                    print(precision, file=f)
-                    print(recall, file=f)
-                    print(f1, file=f)
-                    print("\n", file=f)
 
             # check ratio to assign change-types
             peaks_AS = find_peaks(dissimilarities['A&S'])[0]

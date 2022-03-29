@@ -267,9 +267,9 @@ def print_f1(distances, tol_distance, parameters, window_size, simulate_data=Tru
             breakpoints = parameters.copy()
         list_of_lists = postprocessing.cp_to_timestamps(breakpoints, 0, np.size(breakpoints))
         precision, recall, f1 = cal_f1(list_of_lists, distances, tol_distance)
-    print(precision)
-    print(recall)
-    print(f1)
+    print("precision: " + str(precision))
+    print("recall: " + str(recall))
+    print("f1-score:" + str(f1))
 
     return precision, recall, f1
 

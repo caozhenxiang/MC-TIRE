@@ -8,15 +8,15 @@ warnings.filterwarnings("ignore")
 # SET PARAMETERS
 architecture = 'MC-TIRE'   # TIRE, AE_torch, AE_predict, TIRE_predict
 generate_data = False
-dataset = "change-A8"                  # mean0-9, var0-9, gauss0-9, ar0-9, hasc, bee_dance0-5, eeg_eye_state, well..., if generate_data = False
+dataset = "UCI_test"                  # mean0-9, var0-9, gauss0-9, ar0-9, hasc, bee_dance0-5, eeg_eye_state, well..., if generate_data = False
 enable_feature_plot = False
 enable_eval_plot = True
 enable_1st_phase = False
 enable_model_summary = False
 save_txt = False
-training_verbose = 0
+training_verbose = 1
 used_feature = 'all'   # A, S, B AND all
-domain = "FD"
+domain = "TD"
 rank = 1
 
 # parameters TD
