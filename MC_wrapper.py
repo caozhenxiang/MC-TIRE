@@ -7,7 +7,7 @@ warnings.filterwarnings("ignore")
 
 # --------------------------- #
 # SET PARAMETERS
-architecture = 'MC-TIRE'   # TIRE, AE_torch, AE_predict, TIRE_predict
+architecture = 'MC-TIRE'
 generate_data = False
 datasets = ["change-A2", "change-A3", "change-A4", "change-A5", "change-A6", "change-A7", "change-A8", "change-A9",
             "change-B2", "change-B3", "change-B4", "change-B5", "change-B6", "change-B7", "change-B8", "change-B9",
@@ -27,16 +27,14 @@ domains = ["TD", "FD", "both"]
 rank = 1
 
 # parameters TD
-TD_weight_shared_AS = 1E-1    # lambda^FD in paper
-TD_weight_shared_B = 1E-3
+TD_weight_shared_AS = 1E-2    # lambda^FD in paper
+TD_weight_shared_B = 1E-2
 TD_weight_uncor = 0.1
-TD_weight_CE = 0
 
 # parameters FD
-FD_weight_shared_AS = 1E-1   # lambda^FD in paper
-FD_weight_shared_B = 1E-3
+FD_weight_shared_AS = 1E-2   # lambda^FD in paper
+FD_weight_shared_B = 1E-2
 FD_weight_uncor = 0.1
-FD_weight_CE = 0
 nfft = 30   # number of points for DFT
 norm_mode = "timeseries"   # for calculation of DFT, should the timeseries have mean zero or each window?
 n_filter = 2
@@ -88,9 +86,6 @@ for dataset in datasets:
                                         training_verbose, enable_model_summary, rank)
                 loss_coherent = (loss_coherent_TD + loss_coherent_FD) / 2
                 loss_incoherent = (loss_incoherent_TD + loss_incoherent_FD) / 2
-            # Investigating the feature space
-            # if enable_feature_plot == True:
-            #     utils.plot_feature_space(shared_features_TD, shared_features_FD, parameters)
 
             # --------------------------- #
             # POSTPROCESSING AND PEAK DETECTION

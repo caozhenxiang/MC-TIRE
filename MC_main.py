@@ -8,7 +8,7 @@ warnings.filterwarnings("ignore")
 # SET PARAMETERS
 architecture = 'MC-TIRE'   # TIRE, AE_torch, AE_predict, TIRE_predict
 generate_data = False
-dataset = "UCI_test"                  # mean0-9, var0-9, gauss0-9, ar0-9, hasc, bee_dance0-5, eeg_eye_state, well..., if generate_data = False
+dataset = "bee_dance3"                  # mean0-9, var0-9, gauss0-9, ar0-9, hasc, bee_dance0-5, eeg_eye_state, well..., if generate_data = False
 enable_feature_plot = False
 enable_eval_plot = True
 enable_1st_phase = False
@@ -16,17 +16,17 @@ enable_model_summary = False
 save_txt = False
 training_verbose = 1
 used_feature = 'all'   # A, S, B AND all
-domain = "TD"
+domain = "FD"
 rank = 1
 
 # parameters TD
-TD_weight_shared_AS = 1e-1    # lambda^FD in paper
-TD_weight_shared_B = 1E-3
+TD_weight_shared_AS = 1e-2    # lambda^FD in paper
+TD_weight_shared_B = 1E-2
 TD_weight_uncor = 0.1
 
 # parameters FD
-FD_weight_shared_AS = 1e-1   # lambda^FD in paper
-FD_weight_shared_B = 1E-3
+FD_weight_shared_AS = 1e-2   # lambda^FD in paper
+FD_weight_shared_B = 1E-2
 FD_weight_uncor = 0.1
 nfft = 30   # number of points for DFT
 norm_mode = "timeseries"   # for calculation of DFT, should the timeseries have mean zero or each window?
@@ -63,10 +63,6 @@ else:
                             training_verbose, enable_model_summary, rank)
     loss_coherent = (loss_coherent_TD + loss_coherent_FD) / 2
     loss_incoherent = (loss_incoherent_TD + loss_incoherent_FD) / 2
-
-# Investigating the feature space
-# if enable_feature_plot == True:
-#     utils.plot_feature_space(shared_features_TD, shared_features_FD, parameters)
 
 # --------------------------- #
 # POSTPROCESSING AND PEAK DETECTION
