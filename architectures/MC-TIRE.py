@@ -57,7 +57,9 @@ class Cust_loss(Layer):
         return total_loss
 
 
-def create_parallel_AEs(X, n_filter, enable_summary, loss_weight_share_AS, loss_weight_share_B, loss_weight_uncor, rank):
+def create_parallel_AEs(X, n_filter, enable_summary, loss_weight_share_AS, loss_weight_share_B, loss_weight_uncor, rank,
+                        seed):
+    tf.keras.utils.set_random_seed(seed)
     initializer = tf.keras.initializers.GlorotUniform()
     initializer_cnn = tf.keras.initializers.GlorotUniform()
 
@@ -144,13 +146,13 @@ def create_parallel_AEs(X, n_filter, enable_summary, loss_weight_share_AS, loss_
     # addition to get X
     reconstructed_input = across_channel_info + B_decoded_all
 
-    covriance_matrix_B = tfp.stats.covariance(B_decoded_all, sample_axis=[0, 2], event_axis=-1)
+    correlation_matrix_B = tfp.stats.correlation(B_decoded_all, sample_axis=[0, 2], event_axis=-1)
 
     # add classifier
     z_shared_AS = tf.concat([A, encoded_S], axis=-1)
     z_shared_B = B_shared_all
 
-    my_loss = Cust_loss()([input, reconstructed_input, z_shared_AS, z_shared_B, covriance_matrix_B],
+    my_loss = Cust_loss()([input, reconstructed_input, z_shared_AS, z_shared_B, correlation_matrix_B],
                           loss_weight_share_AS=loss_weight_share_AS, loss_weight_share_B=loss_weight_share_B,
                           loss_weight_uncor=loss_weight_uncor)
 
@@ -176,10 +178,10 @@ def prepare_inputs(windows, nr_ae=2):
 
 
 def train_model(windows, loss_weight_share_AS, loss_weight_share_B, loss_weight_uncor, n_filter,
-                verbose, enable_summary, rank, nr_epochs=200, nr_patience=10):
+                verbose, enable_summary, rank, seed=0, nr_epochs=200, nr_patience=10):
     new_windows = prepare_inputs(windows)
     pae, encoder, ae_AS, ae_B, ae = create_parallel_AEs(new_windows, n_filter, enable_summary, loss_weight_share_AS,
-                                                        loss_weight_share_B, loss_weight_uncor, rank)
+                                                        loss_weight_share_B, loss_weight_uncor, rank, seed)
     callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=nr_patience)
 
     pae.fit({'data': new_windows},
