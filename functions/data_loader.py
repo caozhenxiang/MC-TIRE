@@ -33,7 +33,7 @@ def data_parse(nfft, norm_mode, generate_data, dataset, window_size):
             return windows_TD, windows_FD, parameters
     # load dataset
     else:
-        path = os.path.abspath(os.path.join(os.getcwd(), "../.."))
+        path = os.path.abspath(os.getcwd())
         if 'bee_dance' in dataset:
             data_name = "bee" + dataset[-1] + "_data.txt"
             label_name = "bee" + dataset[-1] + "_labels.txt"

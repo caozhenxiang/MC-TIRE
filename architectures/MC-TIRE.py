@@ -178,8 +178,9 @@ def prepare_inputs(windows, nr_ae=2):
 
 
 def train_model(windows, loss_weight_share_AS, loss_weight_share_B, loss_weight_uncor, n_filter,
-                verbose, enable_summary, rank, seed=0, nr_epochs=200, nr_patience=10):
+                verbose, enable_summary, rank, nr_epochs=200, nr_patience=10):
     new_windows = prepare_inputs(windows)
+    seed = np.random.randint(0, 1e8, 1).tolist()[0]
     pae, encoder, ae_AS, ae_B, ae = create_parallel_AEs(new_windows, n_filter, enable_summary, loss_weight_share_AS,
                                                         loss_weight_share_B, loss_weight_uncor, rank, seed)
     callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=nr_patience)
